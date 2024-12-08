@@ -29,6 +29,24 @@ const userSchema = new mongoose.Schema({
 
 })
 
+userSchema.statics.signup = async function (name, email, password) {
+    if(!name || !email || !password) {
+        throw Error('All fields must be entered')
+    }
+
+    const exists = await this.findOne({email})
+    if(exists) {
+        throw Error('Email already in use')
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(password, salt)
+
+    const user = await this.create({name, email, password: hash})
+
+    return user
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const Expense = require('./expenseModel')
+const Income = require('./incomeModel');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -17,11 +18,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    expenses: {
+    expenses: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Expense'
-    }
+    }],
+    income: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Income'
+    }]
 
 })
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

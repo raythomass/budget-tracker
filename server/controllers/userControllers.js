@@ -1,21 +1,49 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 
+//Create a token by taking a _id, adding a secret from .env, and setting an expiration
+const createToken = (_id) => {
+    return jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
+}
+
+//SIGNUP
 const signupUser = async (req, res) => {
-    const {email, password} = req.body
+    //Grab the name, email, and password from the body
+    const { name, email, password } = req.body
 
     try {
-        const user = await User.signup(email, password)
-
+        //Use the static from the model to create the user with the name, email, and password 
+        const user = await User.signup(name, email, password)
+        //Create a token by entering the newly created user's id that is now in the DB
         const token = createToken(user._id)
-
-        res.status(200).json({email, token})
+        //If everything works, sned back the name, email, and newly created token
+        res.status(200).json({name, email, token})
         
     } catch (error) {
-        res.status(200).json({error: error.message})
+        //If it does not work, send back the error message
+        res.status(400).json({error: error.message})
+    }
+}
+
+//LOGIN
+const loginUser = async (req, res) => {
+    //Grabbing the email and password enetred in the body
+    const { email, password } = req.body
+
+    try {
+        //Use static from User model for login which takes in the email and password
+        const user = await User.login(email, password)
+        //Create a token from the user's _id from the DB
+        const token = createToken(user._id)
+        //Return the email and token when logged in
+        res.status(200).json({email, token})
+    } catch (error) {
+        //If it does not work, send back the error message
+        res.status(400).json({error: error.message})
     }
 }
 
 module.exports = {
-    signupUser
+    signupUser,
+    loginUser
 }

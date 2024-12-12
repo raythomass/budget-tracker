@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const {signupUser} = require('../controllers/userControllers')
+const {signupUser, loginUser} = require('../controllers/userControllers')
 
 const router = express.Router()
 
@@ -12,5 +12,6 @@ router.use(
 );
 
 router.post('/signup', signupUser)
+router.post('/login', loginUser)
 
 module.exports = router

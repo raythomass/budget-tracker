@@ -6,6 +6,15 @@ const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
 }
 
+const getUserWithExpenses = async (req, res) => {
+    try {
+        const user = await User.findById(process.env.TEST_USER_ID).populate('expenses')
+        res.status(200).json({ user });
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 //SIGNUP
 const signupUser = async (req, res) => {
     //Grab the name, email, and password from the body
@@ -44,6 +53,7 @@ const loginUser = async (req, res) => {
 }
 
 module.exports = {
+    getUserWithExpenses,
     signupUser,
     loginUser
 }

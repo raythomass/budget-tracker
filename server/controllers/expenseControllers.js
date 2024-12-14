@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const Expense = require('../models/expenseModel')
 const User = require('../models/userModel')
 
+//GET EXPENSES
+
 //CREATE EXPENSE
 const createExpense = async (req, res) => {
     const { amount, description, category } = req.body
@@ -35,5 +37,5 @@ const deleteExpense = async (req, res) => {
 
 module.exports = {
     createExpense,
-    deleteExpense
+    deleteExpense,
 }

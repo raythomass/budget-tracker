@@ -2,15 +2,13 @@ const express = require('express')
 const cors = require('cors')
 const requireAuth = require('../middleware/requireAuth')
 const {
+    getExpensesFromUser,
+    getOneExpense,
     createExpense,
     deleteExpense,
-    getExpensesFromUser
  } = require('../controllers/expenseControllers')
 
 const router = express.Router()
-// router.use(requireAuth)
-
-//Will need a requireAuth to be able to post an expense
 
 router.use(
     cors({
@@ -20,7 +18,8 @@ router.use(
 );
 
 router.get('/', requireAuth, getExpensesFromUser)
+router.get('/:id', requireAuth, getOneExpense)
 router.post('/', requireAuth, createExpense)
-router.delete('/:id', deleteExpense)
+router.delete('/:id', requireAuth, deleteExpense)
 
 module.exports = router

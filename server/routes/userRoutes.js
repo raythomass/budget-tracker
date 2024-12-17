@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const { getUserWithExpenses, signupUser, loginUser} = require('../controllers/userControllers')
+const requireAuth = require('../middleware/requireAuth');
 
 const router = express.Router()
 
@@ -12,7 +13,7 @@ router.use(
 );
 
 //api/users/
-router.get('/', getUserWithExpenses)
+router.get('/', requireAuth, getUserWithExpenses)
 //api/users/signup
 router.post('/signup', signupUser)
 //api/users/login

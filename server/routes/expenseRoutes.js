@@ -4,6 +4,7 @@ const requireAuth = require('../middleware/requireAuth')
 const {
     createExpense,
     deleteExpense,
+    getExpensesFromUser
  } = require('../controllers/expenseControllers')
 
 const router = express.Router()
@@ -18,7 +19,8 @@ router.use(
     })
 );
 
-router.post('/', createExpense)
+router.get('/', requireAuth, getExpensesFromUser)
+router.post('/', requireAuth, createExpense)
 router.delete('/:id', deleteExpense)
 
 module.exports = router

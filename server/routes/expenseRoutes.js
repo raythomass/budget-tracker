@@ -17,6 +17,7 @@ router.use(
     })
 );
 
+//Requiring auth middlware so that a user must be authorized to use these routes
 router.get('/', requireAuth, getExpensesFromUser)
 router.get('/:id', requireAuth, getOneExpense)
 router.post('/', requireAuth, createExpense)

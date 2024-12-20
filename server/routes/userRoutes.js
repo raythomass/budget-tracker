@@ -12,6 +12,7 @@ router.use(
     })
 );
 
+//Requiring auth middlware so that a user must be authorized to use these routes
 //api/users/
 router.get('/', requireAuth, getUserWithExpenses)
 //api/users/signup

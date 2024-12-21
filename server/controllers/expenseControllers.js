@@ -94,6 +94,28 @@ const deleteExpense = async (req, res) => {
     }
 }
 
+//UPDATE EXPENSE
+const updateExpense = async (req, res) => {
+    //Grab id from params
+    const { id } = req.params
+    try {
+        //Checking the DB if the id is stored
+        if(!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({error: "That expense does not exist"})
+        }
+        //Finding an expense based on the id and updating it iwth the req.body
+        const expense = await Expense.findOneAndUpdate({_id: id}, {...req.body})
+        //If theres no expense let the user know
+        if(!expense) {
+            return res.status(400).json({error: "Expense could not be found"})
+        }
+        //Retrun the updated expense if successful
+        res.status(200).json(expense)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 
 
 module.exports = {
@@ -101,4 +123,5 @@ module.exports = {
     getOneExpense,
     createExpense,
     deleteExpense,
+    updateExpense
 }

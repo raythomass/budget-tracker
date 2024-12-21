@@ -6,6 +6,7 @@ const {
     getOneExpense,
     createExpense,
     deleteExpense,
+    updateExpense,
  } = require('../controllers/expenseControllers')
 
 const router = express.Router()
@@ -22,5 +23,6 @@ router.get('/', requireAuth, getExpensesFromUser)
 router.get('/:id', requireAuth, getOneExpense)
 router.post('/', requireAuth, createExpense)
 router.delete('/:id', requireAuth, deleteExpense)
+router.patch('/:id', requireAuth, updateExpense)
 
 module.exports = router

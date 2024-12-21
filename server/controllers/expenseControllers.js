@@ -57,7 +57,11 @@ const createExpense = async (req, res) => {
         //Set userId as the authorized id from requireAuth
         const userId = req.user._id
         //Expense is created based off the req.body fields
-        const expense = await Expense.create({ amount, description, category })
+        const expense = await Expense.create({
+            amount,
+            description,
+            category
+        })
         //User will be set as the user from the authorization
         const user = await User.findById(userId)
         //Target the users expenses and push the new id into the array

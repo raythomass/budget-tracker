@@ -6,10 +6,34 @@ const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
 }
 
+const getUserWithData = async (req, res) => {
+    const userId = req.user._id
+    try {
+        const user = await User.findById(userId)
+            .populate('expenses')
+            .populate('income')
+        res.status(200).json({ user });
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 const getUserWithExpenses = async (req, res) => {
     const userId = req.user._id
     try {
-        const user = await User.findById(userId).populate('expenses')
+        const user = await User.findById(userId)
+            .populate('expenses')
+        res.status(200).json({ user });
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+const getUserWithIncome = async (req, res) => {
+    const userId = req.user._id
+    try {
+        const user = await User.findById(userId)
+            .populate('income')
         res.status(200).json({ user });
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -54,7 +78,9 @@ const loginUser = async (req, res) => {
 }
 
 module.exports = {
+    getUserWithData,
     getUserWithExpenses,
+    getUserWithIncome,
     signupUser,
     loginUser
 }

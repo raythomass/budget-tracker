@@ -10,3 +10,55 @@
 .navbar {
   font-weight: 600;
 }
+
+.login h1 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.login-label {
+  margin-bottom: 2px;
+}
+
+.login-button {
+  border: #C3D898 solid 2px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #C3D898;
+}
+
+.login-input {
+  border: solid #C3D898 1px;
+  border-radius: 5px;
+  padding: 4px;
+  padding-left: 10px;
+}
+
+.signup h1 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.signup-label {
+  margin-bottom: 2px;
+}
+
+.signup-button {
+  border: #C3D898 solid 2px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+}
+
+.signup-button:hover {
+  background-color: #C3D898;
+}
+
+.signup-input {
+  border: solid #C3D898 1px;
+  border-radius: 5px;
+  padding: 4px;
+  padding-left: 10px;
+}

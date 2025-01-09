@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
+import toast from "react-hot-toast"
 
 //Creating a hook to use for signing up
 export const useSignup = () => {
@@ -28,6 +29,7 @@ export const useSignup = () => {
         if(!response.ok) {
             setIsLoading(false)
             setError(json.error)
+            toast.error(json.error)
         }
         //if the repsonse is ok, create a localstorage item called 'user' that stringifies the json from the api call
         if(response.ok) {
@@ -37,6 +39,7 @@ export const useSignup = () => {
             dispatch({type: 'LOGIN', payload: json})
 
             setIsLoading(false)
+            toast.success('Signup Successful')
         }
     }
     //return the signup function, and the created states to be used in the signup page

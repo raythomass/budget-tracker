@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLogin } from "../hooks/useLogin"
 import {toast} from 'react-hot-toast'
 
@@ -11,8 +11,8 @@ export default function Login() {
         e.preventDefault()
 
         await login(email, password)
-        toast.success('Login Successful')
     }
+    
 
 
   return (
@@ -40,7 +40,7 @@ export default function Login() {
                 />
             </div>
             <button className="login-button py-1 px-5 mt-6 w-full" disabled={isLoading}>Login</button>
-            {error ?? <div className='error'>{error}</div>}
+            {/* {error ?? <div className='error'>{error}</div>} */}
         </div>
     </form>
   )

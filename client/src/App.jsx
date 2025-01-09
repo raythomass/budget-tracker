@@ -4,6 +4,7 @@ import { BrowserRouter,Route, Routes, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <div className='pages'>
+        <Toaster position='top-center' toastOptions={{duration: 2000}}/>
         <Routes>
           <Route
             path='/'

@@ -1,21 +1,30 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
-import {toast} from 'react-hot-toast'
 
 export default function Login() {
+    //Create states for email and password
+    //This willbe set based on what the user puts into the inut variables below
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    //Grab login, islaoding, and error from the useLogin.jsx context
     const { login, isLoading, error } = useLogin()
 
+    //handleSubmit will be triggered when submit the below form
     const handleSubmit = async (e) => {
+        //prevent default
         e.preventDefault()
-
+        //use login function from useLogin.jsx and feed it the email and password states
         await login(email, password)
     }
     
 
 
   return (
+    //Create a login form and have the handleSubmit trigger when the form is submitted
+    //Inputs for information must hvae onChange and value
+    //Input onChange takes and event (e) and sets the state based on the e.target.value
+    //Value of each input will be the state ie. email input has a value of email which corresponds the state created
+    //The onChange is repsonsible for changing the value
     <form className='login flex justify-center' onSubmit={handleSubmit}>
         <div className="login-container lg:w-1/4 md:w-1/2 sm:w-1/2 p-10">
             <h1>Login</h1>

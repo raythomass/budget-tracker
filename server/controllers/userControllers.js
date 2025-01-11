@@ -10,6 +10,7 @@ const getUserWithData = async (req, res) => {
     const userId = req.user._id
     try {
         const user = await User.findById(userId)
+            .select('-password')
             .populate('expenses')
             .populate('income')
         res.status(200).json({ user });
@@ -22,6 +23,7 @@ const getUserWithExpenses = async (req, res) => {
     const userId = req.user._id
     try {
         const user = await User.findById(userId)
+            .select('-password')
             .populate('expenses')
         res.status(200).json({ user });
     } catch (error) {
@@ -33,6 +35,7 @@ const getUserWithIncome = async (req, res) => {
     const userId = req.user._id
     try {
         const user = await User.findById(userId)
+            .select('-password')
             .populate('income')
         res.status(200).json({ user });
     } catch (error) {

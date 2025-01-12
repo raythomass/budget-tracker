@@ -43,6 +43,7 @@ export default function Home() {
         <Doughnut
         className="doughnut"
           data={{
+            labels: userExpenses.map((expense) => expense.category),
             datasets: [{
               data: userExpenses.map((expenses) => expenses.amount),
               backgroundColor: [
@@ -70,6 +71,7 @@ export default function Home() {
         <Doughnut
         className="doughnut"
           data={{
+            labels: userIncome.map((income) => income.source),
             datasets: [{
               data: userIncome.map((income) => income.amount),
               backgroundColor: [

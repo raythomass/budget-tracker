@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <div>
-        <p>Welcome, {userData.name}</p>
+        <h2 className="text-center m-6">Welcome, {userData.name}</h2>
         <div className="doughnut-chart flex">
         <Doughnut
         className="doughnut"
@@ -68,7 +68,15 @@ export default function Home() {
             }
           }}
         />
-        <Doughnut
+        <div className="p-8">
+          <h2>Income:</h2>
+          {userIncome.map((income) => (
+            <>
+            <p>${income.amount}</p>
+            </>
+          ))}
+        </div>
+        {/* <Doughnut
         className="doughnut"
           data={{
             labels: userIncome.map((income) => income.source),
@@ -95,7 +103,7 @@ export default function Home() {
               }
             }
           }}
-        />
+        /> */}
         </div>
     </div>
   )

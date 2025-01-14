@@ -8,14 +8,19 @@ defaults.responsive = true;
 
 
 export default function Home() {
+  //Grab user from context
   const { user } = useAuthContext()
+  //Create states for user, expense, and income data
   const [userData, setUserData] = useState({})
   const [userExpenses, setUserExpenses] = useState([])
   const [userIncome, setUserIncome] = useState([])
 
   useEffect(() => {
+    //Fetch user to be all to use all user data 
     const fetchUser = async () => {
       try {
+        //Fecth user data from endpoint
+        //Authorize it by using the token in the user context
         const response = await fetch('http://localhost:3001/api/users/data', {
           headers: {
             'Authorization': `Bearer ${user.token}`

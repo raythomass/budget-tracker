@@ -18,7 +18,7 @@ export const useLogin = () => {
         setError(null)
         //Create a post request named response to the login route
         //POST route because the forms will be posting the information to the route 
-        const response = await fetch('https://budget-tracker-izau.onrender.com//api/users/login', {
+        const response = await fetch('http://localhost:3001/api/users/login', {
             //Define Post as method
             method: 'POST',
             //Define headers as content-type and then specify appplication/json

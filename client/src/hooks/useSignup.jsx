@@ -18,7 +18,7 @@ export const useSignup = () => {
         setError(null)
         //fetch API from backend route for signing up
         //Method is POST and the body needs to stringify the variables added in by the user
-        const response = await fetch('http://localhost:3001/api/users/signup', {
+        const response = await fetch('https://budget-tracker-izau.onrender.com//api/users/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({name, email, password})

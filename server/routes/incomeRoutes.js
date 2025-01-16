@@ -14,7 +14,7 @@ const router = express.Router()
 router.use(
     cors({
         credentials: true,
-        origin: 'https://budget-tracker-izau.onrender.com/'
+        origin: 'http://localhost:3001'
     })
 );
 

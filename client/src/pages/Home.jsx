@@ -23,7 +23,7 @@ export default function Home() {
       try {
         //Fetch user data from endpoint
         //Authorize it by using the token in the user context
-        const response = await fetch('https://budget-tracker-izau.onrender.com//api/users/data', {
+        const response = await fetch('http://localhost:3001/api/users/data', {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }

@@ -38,7 +38,7 @@ export default function Home() {
       }
 
       }
-
+      //if there is a user, run the fetch user function to grab the user's data
       if (user) {
         fetchUser()
     }

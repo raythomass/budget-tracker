@@ -29,6 +29,7 @@ export default function Home() {
           }
         });
         const json = await response.json()
+        //Set user data, expenses, and income
         setUserData(json.user)
         setUserExpenses(json.user.expenses)
         setUserIncome(json.user.income)

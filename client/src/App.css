@@ -67,11 +67,24 @@ h2{
   padding-left: 10px;
 }
 
-.doughnut-chart {
-  max-width: 50%;
-  max-height: 50vh;
+.chart-totals-cont {
+  min-width: 100%;
 }
 
-.doughnut {
-  min-width: 100%;
+.expense-summary {
+  width: 50%;
+}
+
+.expense-summary h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.income-summary {
+  width: 50%;
+}
+
+.income-summary h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
 }

@@ -4,6 +4,8 @@ import { Chart as ChartJS, defaults } from "chart.js/auto"
 import { Doughnut } from "react-chartjs-2"
 import ExpenseTotal from "../components/ExpenseTotal";
 import IncomeTotal from "../components/IncomeTotal";
+import ExpenseSummary from "../components/ExpenseSummary";
+import IncomeSummary from "../components/IncomeSummary";
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -47,46 +49,46 @@ export default function Home() {
   return (
     <div>
         <h2 className="text-center m-6">Welcome, {userData.name}</h2>
-        <div className="doughnut-chart flex">
-          <Doughnut
-          className="doughnut"
-            data={{
-              labels: userExpenses.map((expense) => expense.category),
-              datasets: [{
-                data: userExpenses.map((expenses) => expenses.amount),
-                backgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56",
-                  "#4BC0C0",
-                  "#9966FF",
-                  "#FF9F40"
-                ]
-              }]
-            }}
-            options={{
-              plugins:{
-                title:{
-                  text: "Expenses",
-                  display: true,
-                  font: {
-                    size: 20
+        <div className="chart-totals-cont flex">
+          <div className="doughnut-chart">
+            <Doughnut
+            className="doughnut"
+              data={{
+                labels: userExpenses.map((expense) => expense.category),
+                datasets: [{
+                  data: userExpenses.map((expenses) => expenses.amount),
+                  backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56",
+                    "#4BC0C0",
+                    "#9966FF",
+                    "#FF9F40"
+                  ]
+                }]
+              }}
+              options={{
+                plugins:{
+                  title:{
+                    text: "Expenses",
+                    display: true,
+                    font: {
+                      size: 20
+                    }
                   }
                 }
-              }
-            }}
-          />
-          <div className="p-8">
-            <h2>Income:</h2>
-            {userIncome.map((income) => (
-              <>
-              <p>${income.amount}</p>
-              </>
-            ))}
+              }}
+            />
+          </div>
+          <div className="totals-container">
+            <ExpenseTotal expenses={userExpenses}/>
+            <IncomeTotal incomes={userIncome}/>
           </div>
         </div>
-        <ExpenseTotal expenses={userExpenses}/>
-        <IncomeTotal incomes={userIncome}/>
+        <div className="expense-summary-container flex">
+            <ExpenseSummary expenses={userExpenses}/>
+            <IncomeSummary incomes={userIncome}/>
+        </div>
     </div>
   )
 }

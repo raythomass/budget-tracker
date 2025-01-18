@@ -6,6 +6,15 @@
   margin: 0 auto;
   font-family: Figtree, sans-serif;
 }
+
+body {
+  background-color: #f4f6fc;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
 h2{
   font-size: 1.4rem;
   font-weight: 600;
@@ -67,24 +76,33 @@ h2{
   padding-left: 10px;
 }
 
-.chart-totals-cont {
-  min-width: 100%;
+
+
+
+.donut-totals-div {
+  border: solid red 1px;
 }
 
-.expense-summary {
+.donut-chart-div {
+  min-height: 40vh;
   width: 50%;
+  border: solid red 1px;
 }
 
-.expense-summary h1 {
-  font-size: 1.2rem;
-  font-weight: 600;
+
+
+
+.expense-summary-div {
+  border: solid red 1px;
+  width: 33.333%;
 }
 
-.income-summary {
-  width: 50%;
+.income-summary-div {
+  border: solid red 1px;
+  width: 33.333%;
 }
 
-.income-summary h1 {
-  font-size: 1.2rem;
-  font-weight: 600;
+.totals-div {
+  border: solid red 1px;
+  width: 33.333%;
 }

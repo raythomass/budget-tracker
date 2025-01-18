@@ -11,7 +11,7 @@ export default function IncomeTotal({ incomes }) {
  //Output should look like "Income Summary: $900" or however much the total vlaue of the array comes out to
   return (
     <div>
-        <h1>Income Total: {incomeSummary}</h1>
+        <h2>Income Total: {incomeSummary}</h2>
     </div>
   )
 }

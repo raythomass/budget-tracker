@@ -48,11 +48,11 @@ export default function Home() {
 
   return (
     <div>
-        <h2 className="text-center m-6">Welcome, {userData.name}</h2>
-        <div className="chart-totals-cont flex">
-          <div className="doughnut-chart">
+        <h2 className="">Welcome, {userData.name}</h2>
+        <div className="donut-totals-div flex">
+          <div className="donut-chart-div p-4">
             <Doughnut
-            className="doughnut"
+            className="donut"
               data={{
                 labels: userExpenses.map((expense) => expense.category),
                 datasets: [{
@@ -70,7 +70,7 @@ export default function Home() {
               options={{
                 plugins:{
                   title:{
-                    text: "Expenses",
+                    text: "Total Expenses",
                     display: true,
                     font: {
                       size: 20
@@ -80,46 +80,49 @@ export default function Home() {
               }}
             />
           </div>
-          <div className="totals-container">
-            <ExpenseTotal expenses={userExpenses}/>
-            <IncomeTotal incomes={userIncome}/>
+          <div className="donut-chart-div p-4">
+          <Doughnut
+            className="donut"
+              data={{
+                labels: userIncome.map((income) => income.category),
+                datasets: [{
+                  data: userIncome.map((income) => income.amount),
+                  backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56",
+                    "#4BC0C0",
+                    "#9966FF",
+                    "#FF9F40"
+                  ]
+                }]
+              }}
+              options={{
+                plugins:{
+                  title:{
+                    text: "Total Income",
+                    display: true,
+                    font: {
+                      size: 20
+                    }
+                  }
+                }
+              }}
+            />
           </div>
         </div>
-        <div className="expense-summary-container flex">
-            <ExpenseSummary expenses={userExpenses}/>
+        <div className="summaries flex">
+          <div className="expense-summary-div p-4">
+              <ExpenseSummary expenses={userExpenses}/>
+          </div>
+          <div className="income-summary-div p-4">
             <IncomeSummary incomes={userIncome}/>
+          </div>
+          <div className="totals-div">
+            <ExpenseTotal expenses={userExpenses}/>
+            <IncomeTotal incomes={userIncome}/>
+        </div>
         </div>
     </div>
   )
 }
-
-
-
-{/* <Doughnut
-        className="doughnut"
-          data={{
-            labels: userIncome.map((income) => income.source),
-            datasets: [{
-              data: userIncome.map((income) => income.amount),
-              backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#4BC0C0",
-                "#9966FF",
-                "#FF9F40"
-              ]
-            }]
-          }}
-          options={{
-            plugins:{
-              title:{
-                text: "Income",
-                display: true,
-                font: {
-                  size: 20
-                }
-              }
-            }
-          }}
-        /> */}

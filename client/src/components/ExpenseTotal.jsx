@@ -11,7 +11,7 @@ export default function ExpenseTotal({ expenses }) {
  //Output should look like "Expense Summary: $1200" or however much the total vlaue of the array comes out to
   return (
     <div>
-        <h1>Expense Total: {expenseSummary}</h1>
+        <h2>Expense Total: {expenseSummary}</h2>
     </div>
   )
 }

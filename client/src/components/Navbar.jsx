@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <div className="navbar flex justify-between px-40 py-6">
         <Link to={'/'}>
-            <h1 className="logo">Budget Tracker</h1>
+            <h3 className="logo">Budget Tracker</h3>
         </Link>
             {user && (
                 <button onClick={handleSubmit}>Logout</button>

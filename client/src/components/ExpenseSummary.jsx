@@ -2,10 +2,14 @@ import React from 'react'
 
 export default function ExpenseSummary({ expenses }) {
   return (
-    <div className='expense-summary p-8'>
-        <h1>Expense Summary</h1>
+    <div className='expense-summary'>
+        <h2 className='mb-2'>Expense Summary</h2>
         {expenses.map((expense) => (
-            <p>{expense.amount}</p>
+          <div key={expense} className='flex flex-col mb-4'>
+            <h4>{expense.description}</h4>
+            <p>{expense.category}</p>
+          </div>
+
         ))}
     </div>
   )

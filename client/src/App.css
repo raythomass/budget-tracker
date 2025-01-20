@@ -79,30 +79,79 @@ h2{
 
 
 
-.donut-totals-div {
-  border: solid red 1px;
-}
 
 .donut-chart-div {
   min-height: 40vh;
-  width: 50%;
-  border: solid red 1px;
+  width: 49.5%;
+  border: solid rgb(234, 234, 234) 1px;
+  background-color: white;
+  border-radius: 15px;
 }
 
 
 
 
+
+.summaries {
+}
+
+.summary-red {
+  color: rgb(164, 16, 16);
+}
+
+.summary-green {
+  color: rgb(65, 152, 65);
+}
+
+.expense-summary button {
+  border: solid rgb(179, 179, 179) 1px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.expense-summary h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.expense-summary p {
+  font-size: 0.9rem;
+  color: #646464;
+}
+
 .expense-summary-div {
-  border: solid red 1px;
   width: 33.333%;
+  border: solid rgb(234, 234, 234) 1px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.income-summary button {
+  border: solid rgb(179, 179, 179) 1px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.income-summary h4 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.income-summary p {
+  font-size: 0.9rem;
+  color: #646464;
 }
 
 .income-summary-div {
-  border: solid red 1px;
   width: 33.333%;
+  border: solid rgb(234, 234, 234) 1px;
+  background-color: white;
+  border-radius: 15px;
 }
 
 .totals-div {
-  border: solid red 1px;
   width: 33.333%;
+  border: solid rgb(234, 234, 234) 1px;
+  background-color: white;
+  border-radius: 15px;
 }

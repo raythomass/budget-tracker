@@ -49,8 +49,8 @@ export default function Home() {
   return (
     <div>
         <h2 className="">Welcome, {userData.name}</h2>
-        <div className="donut-totals-div flex">
-          <div className="donut-chart-div p-4">
+        <div className="donut-totals-div flex justify-between p-4">
+          <div className="donut-chart-div p-2">
             <Doughnut
             className="donut"
               data={{
@@ -80,7 +80,7 @@ export default function Home() {
               }}
             />
           </div>
-          <div className="donut-chart-div p-4">
+          <div className="donut-chart-div p-2">
           <Doughnut
             className="donut"
               data={{
@@ -111,17 +111,17 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="summaries flex">
+        <div className="summaries flex p-4 pt-0 gap-4">
           <div className="expense-summary-div p-4">
               <ExpenseSummary expenses={userExpenses}/>
           </div>
           <div className="income-summary-div p-4">
             <IncomeSummary incomes={userIncome}/>
           </div>
-          <div className="totals-div">
+          <div className="totals-div p-4">
             <ExpenseTotal expenses={userExpenses}/>
             <IncomeTotal incomes={userIncome}/>
-        </div>
+          </div>
         </div>
     </div>
   )

@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import { Toaster } from 'react-hot-toast'
 import { useAuthContext } from './hooks/useAuthContext'
+import CreateExpense from './pages/CreateExpense'
 
 function App() {
 
@@ -28,6 +29,10 @@ function App() {
           <Route
             path='/signup'
             element={ !user ? <Signup/> : <Navigate to={'/'} />}
+          />
+          <Route
+            path='/createExpense'
+            element={ user ? <CreateExpense/> : <Navigate to={'/login'} />}
           />
         </Routes>
       </div>

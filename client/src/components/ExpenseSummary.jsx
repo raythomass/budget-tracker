@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 
 export default function ExpenseSummary({ expenses }) {
@@ -6,9 +7,11 @@ export default function ExpenseSummary({ expenses }) {
     <div className='expense-summary'>
         <div className='flex justify-between mb-4'>
           <h2 className='mb-2'>Expense Summary</h2>
-          <button className='p-2'>Add Expense</button>
+          <Link to={'/createExpense'}>
+            <button className='p-2'>Add Expense</button>
+          </Link>
         </div>
-        {expenses.map((expense) => (
+        {expenses.slice(0,4).map((expense) => (
           <div key={expense} className='flex justify-between mb-4'>
             <div>
               <h4>{expense.description}</h4>

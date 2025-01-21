@@ -85,6 +85,7 @@ h2{
   width: 49.5%;
   border: solid rgb(234, 234, 234) 1px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   border-radius: 15px;
 }
 
@@ -93,6 +94,7 @@ h2{
 
 
 .summaries {
+  
 }
 
 .summary-red {
@@ -123,6 +125,7 @@ h2{
   width: 33.333%;
   border: solid rgb(234, 234, 234) 1px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   border-radius: 15px;
 }
 
@@ -146,6 +149,7 @@ h2{
   width: 33.333%;
   border: solid rgb(234, 234, 234) 1px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   border-radius: 15px;
 }
 
@@ -153,5 +157,14 @@ h2{
   width: 33.333%;
   border: solid rgb(234, 234, 234) 1px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   border-radius: 15px;
+}
+
+.add-expense-div {
+  
+}
+
+.add-expense {
+  width: 50%;
 }

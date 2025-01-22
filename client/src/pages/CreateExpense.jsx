@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CreateExpense() {
   return (
-    <div className=' add-expense-div flex flex-col  p-32'>
+    <div className=' add-expense-div flex flex-col p-32'>
         <h1 className='mb-6'>Add an Expense</h1>
         <form>
             <div className='add-expense flex flex-col'>

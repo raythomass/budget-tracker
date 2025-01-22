@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 
+//"Expenses" is taken in to be be used as stated in the homepage 
+//Create a div inside the expenses.map so each user income will generate in the layout created
 export default function ExpenseSummary({ expenses }) {
   return (
     <div className='expense-summary'>

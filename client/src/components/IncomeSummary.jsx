@@ -1,6 +1,8 @@
 import React from 'react'
 import { format } from 'date-fns'
 
+//"Incomes" is taken in to be be used as stated in the homepage 
+//Create a div inside the incomes.map so each user income will generate in the layout created
 export default function IncomeSummary({ incomes }) {
   return (
     <div className='income-summary'>

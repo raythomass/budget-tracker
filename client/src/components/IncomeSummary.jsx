@@ -11,7 +11,7 @@ export default function IncomeSummary({ incomes }) {
           <button className='p-2'>Add Income</button>
         </div>
         {incomes.map((income) => (
-          <div key={income} className='flex justify-between mb-4'>
+          <div key={income._id} className='flex justify-between mb-4'>
           <div>
             <h4>{income.description}</h4>
             <p>{format(new Date(income.createdAt), "MM/dd/yyyy")}</p>

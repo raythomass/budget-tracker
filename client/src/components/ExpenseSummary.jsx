@@ -14,7 +14,7 @@ export default function ExpenseSummary({ expenses }) {
           </Link>
         </div>
         {expenses.slice(0,4).map((expense) => (
-          <div key={expense} className='flex justify-between mb-4'>
+          <div key={expense._id} className='flex justify-between mb-4'>
             <div>
               <h4>{expense.description}</h4>
               <p>{format(new Date(expense.createdAt), "MM/dd/yyyy")}</p>

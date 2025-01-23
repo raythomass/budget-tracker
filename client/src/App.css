@@ -168,3 +168,45 @@ h2{
 .add-expense {
   width: 50%;
 }
+
+
+@media only screen and (max-width: 750px) {
+  .donut-totals-div {
+    flex-direction: column;
+  }
+
+  .donut-chart-div {
+    height: 40vh;
+    width: 100%;
+  }
+
+  .summaries {
+    flex-direction: column;
+  }
+
+  .expense-summary-div {
+    width: 100%;
+  }
+
+  .income-summary-div {
+    width: 100%;
+  }
+
+  .totals-div {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024) {
+  .expense-summary-div {
+    width: 50%;
+  }
+
+  .income-summary-div {
+    width: 50%;
+  }
+
+  .totals-div {
+    width: 100%;
+  }
+}

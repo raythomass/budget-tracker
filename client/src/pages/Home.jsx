@@ -50,7 +50,7 @@ export default function Home() {
     <div>
         <h2 className="">Welcome, {userData.name}</h2>
         <div className="donut-totals-div flex justify-between p-4">
-          <div className="donut-chart-div p-2">
+          <div className="donut-chart-div p-4">
             <Doughnut
             className="donut"
               data={{
@@ -80,7 +80,7 @@ export default function Home() {
               }}
             />
           </div>
-          <div className="donut-chart-div p-2">
+          <div className="donut-chart-div p-4">
           <Doughnut
             className="donut"
               data={{

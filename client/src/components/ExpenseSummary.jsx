@@ -20,7 +20,7 @@ export default function ExpenseSummary({ expenses }) {
               <p>{format(new Date(expense.createdAt), "MM/dd/yyyy")}</p>
             </div>
             <div>
-              <h4 className='summary-red'>- ${expense.amount}</h4>
+              <h4 className='summary-red'>${expense.amount}</h4>
             </div>
           </div>
         ))}

@@ -11,8 +11,8 @@ const getUserWithData = async (req, res) => {
     try {
         const user = await User.findById(userId)
             .select('-password')
-            .populate('expenses')
-            .populate('income')
+            .populate('expenses').sort({createdAt: -1})
+            .populate('income').sort({createdAt: -1})
         res.status(200).json({ user });
     } catch (error) {
         res.status(400).json({error: error.message})

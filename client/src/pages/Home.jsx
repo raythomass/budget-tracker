@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { Chart as ChartJS, defaults } from "chart.js/auto"
 import { Doughnut } from "react-chartjs-2"
@@ -6,6 +7,7 @@ import ExpenseTotal from "../components/ExpenseTotal";
 import IncomeTotal from "../components/IncomeTotal";
 import ExpenseSummary from "../components/ExpenseSummary";
 import IncomeSummary from "../components/IncomeSummary";
+import { useExpenseContext } from "../hooks/useExpenseContext"
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -14,6 +16,7 @@ defaults.responsive = true;
 export default function Home() {
   //Grab user from context
   const { user } = useAuthContext()
+  const { expenses, dispatch } = useExpenseContext()
   //Create states for user, expense, and income data
   const [userData, setUserData] = useState({})
   const [userExpenses, setUserExpenses] = useState([])
@@ -33,7 +36,8 @@ export default function Home() {
         const json = await response.json()
         //Set user data, expenses, and income
         setUserData(json.user)
-        setUserExpenses(json.user.expenses)
+        // setUserExpenses(json.user.expenses)
+        dispatch({type: "SET_EXPENSES", payload: json.user.expenses})
         setUserIncome(json.user.income)
       } catch (error) {
         console.log({error: error.message})
@@ -44,7 +48,7 @@ export default function Home() {
       if (user) {
         fetchUser()
     }
-  },[user])
+  },[user, dispatch])
 
   return (
     <div>
@@ -54,9 +58,9 @@ export default function Home() {
             <Doughnut
             className="donut"
               data={{
-                labels: userExpenses.map((expense) => expense.category),
+                labels: expenses && expenses.map((expense) => expense.category),
                 datasets: [{
-                  data: userExpenses.map((expenses) => expenses.amount),
+                  data: expenses && expenses.map((expense) => expense.amount),
                   backgroundColor: [
                     "#FF6384",
                     "#36A2EB",
@@ -113,10 +117,26 @@ export default function Home() {
         </div>
         <div className="summaries flex p-4 pt-0 gap-4">
           <div className="expense-summary-div p-4">
-              <ExpenseSummary expenses={userExpenses}/>
+            <div className='flex justify-between mb-4'>
+              <h2 className='mb-2'>Expense Summary</h2>
+              <Link to={'/createExpense'}>
+                <button className='p-2'>Add Expense</button>
+              </Link>
+            </div>
+            {expenses && expenses.slice(0,4).map((expense) => (
+              <ExpenseSummary key={expense._id} expenses={expense}/>
+            ))}
           </div>
           <div className="income-summary-div p-4">
-            <IncomeSummary incomes={userIncome}/>
+            <div className='flex justify-between mb-4'>
+              <h2 className='mb-2'>Income Summary</h2>
+              <Link to={'/createIncome'}>
+                <button className='p-2'>Add Income</button>
+              </Link>
+            </div>
+            {userIncome.slice(0,4).map((income) => (
+              <IncomeSummary key={income._id} income={income}/>
+            ))}
           </div>
           <div className="totals-div p-4">
             <ExpenseTotal expenses={userExpenses}/>

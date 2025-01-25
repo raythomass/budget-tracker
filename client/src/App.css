@@ -20,6 +20,17 @@ h2{
   font-weight: 600;
 }
 
+.trash-icon {
+  transition: color 0.2s;
+}
+
+.trash-icon:hover {
+  color: rgb(164, 16, 16);
+}
+
+
+
+
 .navbar {
   font-weight: 600;
 }
@@ -105,18 +116,18 @@ h2{
   color: rgb(65, 152, 65);
 }
 
-.expense-summary button {
+.expense-summary-div button {
   border: solid rgb(179, 179, 179) 1px;
   border-radius: 15px;
   font-size: 0.9rem;
 }
 
-.expense-summary h4 {
+.expense-summary-div h4 {
   font-size: 1rem;
   font-weight: 600;
 }
 
-.expense-summary p {
+.expense-summary-div p {
   font-size: 0.9rem;
   color: #646464;
 }
@@ -166,6 +177,10 @@ h2{
 }
 
 .add-expense {
+  width: 50%;
+}
+
+.add-income {
   width: 50%;
 }
 

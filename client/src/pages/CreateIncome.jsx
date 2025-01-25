@@ -2,17 +2,15 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useExpenseContext } from '../hooks/useExpenseContext'
 
-export default function CreateExpense() {
+export default function CreateIncome() {
     const navigate = useNavigate()
 
     const { user } = useAuthContext()
-    const { dispatch } = useExpenseContext()
 
     const [amount, setAmount] = useState('')
     const [description, setDescription] = useState('')
-    const [category, setCategory] = useState('')
+    const [source, setSource] = useState('')
     const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
@@ -23,11 +21,11 @@ export default function CreateExpense() {
             return
         }
 
-        const expense = {amount, description, category}
+        const income = {amount, description, source}
 
-        const response = await fetch('http://localhost:3001/api/expenses/', {
+        const response = await fetch('http://localhost:3001/api/income/', {
             method: 'POST',
-            body: JSON.stringify(expense),
+            body: JSON.stringify(income),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
@@ -35,6 +33,7 @@ export default function CreateExpense() {
         })
 
         const json = response.json()
+        console.log(json)
 
         if(!response.ok) {
             setError(json.error)
@@ -42,12 +41,11 @@ export default function CreateExpense() {
         }
 
         if(response.ok) {
-            toast.success('New Expense Added')
+            toast.success('New Income Added')
             setAmount('')
             setDescription('')
-            setCategory('')
-            console.log('New Expense Created', json)
-            dispatch({type: "CREATE_EXPENSE", payload: json})
+            setSource('')
+            console.log('New Income Created', json)
             navigate('/')
         }
 
@@ -57,10 +55,10 @@ export default function CreateExpense() {
 
 
   return (
-    <div className=' add-expense-div flex flex-col p-32'>
-        <h1 className='mb-6'>Add an Expense</h1>
+    <div className=' add-income-div flex flex-col p-32'>
+        <h1 className='mb-6'>Add an Income</h1>
         <form onSubmit={handleSubmit}> 
-            <div className='add-expense flex flex-col'>
+            <div className='add-income flex flex-col'>
                 <label className='mb-2'>Amount:</label>
                 <input
                     className='mb-4 p-2'
@@ -81,16 +79,16 @@ export default function CreateExpense() {
                 />
             </div>
             <div className='add-expense flex flex-col'>
-                <label className='mb-2'>Category:</label>
+                <label className='mb-2'>Source:</label>
                 <input
                     className='mb-4 p-2'
                     type='text'
                     placeholder='Category'
-                    onChange={(e) => setCategory(e.target.value)}
-                    value={category}
+                    onChange={(e) => setSource(e.target.value)}
+                    value={source}
                 />
             </div>
-            <button>Add Expense</button>
+            <button>Add Income</button>
         </form>
         {error ?? <div className='error'>{error}</div>}
     </div>

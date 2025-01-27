@@ -4,13 +4,16 @@ import App from './App.jsx'
 import './index.css'
 import { AuthContextProvider } from './context/AuthContext.jsx'
 import { ExpenseContextProvider } from './context/ExpenseContext.jsx'
+import { IncomeContextProvider } from './context/IncomeContext.jsx'
 // import { ExpenseContextProvider } from './context/ExpenseContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthContextProvider>
       <ExpenseContextProvider>
-        <App />
+        <IncomeContextProvider>
+          <App />
+        </IncomeContextProvider>
       </ExpenseContextProvider>
     </AuthContextProvider>
   </React.StrictMode>,

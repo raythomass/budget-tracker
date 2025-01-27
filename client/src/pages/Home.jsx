@@ -3,11 +3,12 @@ import { Link } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { Chart as ChartJS, defaults } from "chart.js/auto"
 import { Doughnut } from "react-chartjs-2"
-import ExpenseTotal from "../components/ExpenseTotal";
-import IncomeTotal from "../components/IncomeTotal";
+// import ExpenseTotal from "../components/ExpenseTotal";
+// import IncomeTotal from "../components/IncomeTotal";
 import ExpenseSummary from "../components/ExpenseSummary";
 import IncomeSummary from "../components/IncomeSummary";
 import { useExpenseContext } from "../hooks/useExpenseContext"
+import { useIncomeContext } from "../hooks/useIncomeContext"
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -16,11 +17,10 @@ defaults.responsive = true;
 export default function Home() {
   //Grab user from context
   const { user } = useAuthContext()
-  const { expenses, dispatch } = useExpenseContext()
+  const { expenses, dispatch: expenseDispatch } = useExpenseContext()
+  const { income, dispatch: incomeDispatch} = useIncomeContext()
   //Create states for user, expense, and income data
   const [userData, setUserData] = useState({})
-  const [userExpenses, setUserExpenses] = useState([])
-  const [userIncome, setUserIncome] = useState([])
 
   useEffect(() => {
     //Fetch user to be all to use all user data 
@@ -37,8 +37,8 @@ export default function Home() {
         //Set user data, expenses, and income
         setUserData(json.user)
         // setUserExpenses(json.user.expenses)
-        dispatch({type: "SET_EXPENSES", payload: json.user.expenses})
-        setUserIncome(json.user.income)
+        expenseDispatch({type: "SET_EXPENSES", payload: json.user.expenses})
+        incomeDispatch({type: "SET_INCOME", payload: json.user.income})
       } catch (error) {
         console.log({error: error.message})
       }
@@ -48,7 +48,7 @@ export default function Home() {
       if (user) {
         fetchUser()
     }
-  },[user, dispatch])
+  },[user, expenseDispatch, incomeDispatch])
 
   return (
     <div>
@@ -88,9 +88,9 @@ export default function Home() {
           <Doughnut
             className="donut"
               data={{
-                labels: userIncome.map((income) => income.category),
+                labels: income && income.map((incomes) => incomes.category),
                 datasets: [{
-                  data: userIncome.map((income) => income.amount),
+                  data: income && income.map((incomes) => incomes.amount),
                   backgroundColor: [
                     "#FF6384",
                     "#36A2EB",
@@ -134,13 +134,13 @@ export default function Home() {
                 <button className='p-2'>Add Income</button>
               </Link>
             </div>
-            {userIncome.slice(0,4).map((income) => (
-              <IncomeSummary key={income._id} income={income}/>
+            {income && income.slice(0,4).map((incomes) => (
+              <IncomeSummary key={incomes._id} income={incomes}/>
             ))}
           </div>
           <div className="totals-div p-4">
-            <ExpenseTotal expenses={userExpenses}/>
-            <IncomeTotal incomes={userIncome}/>
+            {/* <ExpenseTotal expenses={userExpenses}/>
+            <IncomeTotal incomes={userIncome}/> */}
           </div>
         </div>
     </div>

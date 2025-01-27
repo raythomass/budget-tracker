@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format, isValid } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { toast } from 'react-hot-toast'
@@ -13,6 +13,9 @@ export default function ExpenseSummary({ expenses }) {
   const { dispatch } = useExpenseContext()
   const [error, setError] = useState(null)
 
+  const date = new Date(expenses.createdAt); // Convert to Date object
+  const formattedDate = isValid(date) ? format(date, "MM/dd/yyyy") : "Invalid Date";
+
   const handleClick = async () => {
     const expenseId = expenses._id
     const response = await fetch(`http://localhost:3001/api/expenses/${expenseId}`, {
@@ -20,7 +23,6 @@ export default function ExpenseSummary({ expenses }) {
       headers: {
         'Authorization': `Bearer ${user.token}`
       }
-  
     })
     const json = await response.json()
 
@@ -42,7 +44,9 @@ export default function ExpenseSummary({ expenses }) {
         <div className='flex justify-between mb-4'>
             <div>
               <h4>{expenses.description}</h4>
-              <p>{format(new Date(expenses.createdAt), "MM/dd/yyyy")}</p>
+              {/* <p>{format(new Date(expenses.createdAt), "MM/dd/yyyy")}</p> */}
+              <p>{formattedDate}</p>
+              
             </div>
             <div className='flex items-center gap-4'>
               <h4 className='summary-red'>${expenses.amount}</h4>
@@ -52,5 +56,4 @@ export default function ExpenseSummary({ expenses }) {
     </div>
   )
 }
-
 

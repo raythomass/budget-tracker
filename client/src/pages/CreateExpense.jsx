@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { format } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useExpenseContext } from '../hooks/useExpenseContext'
@@ -46,8 +47,8 @@ export default function CreateExpense() {
             setAmount('')
             setDescription('')
             setCategory('')
-            console.log('New Expense Created', json)
             dispatch({type: "CREATE_EXPENSE", payload: json})
+            console.log('New Expense Created', json)
             navigate('/')
         }
 

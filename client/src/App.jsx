@@ -8,6 +8,8 @@ import { Toaster } from 'react-hot-toast'
 import { useAuthContext } from './hooks/useAuthContext'
 import CreateExpense from './pages/CreateExpense'
 import CreateIncome from './pages/CreateIncome'
+import AllIncome from './pages/AllIncome'
+import AllExpenses from './pages/AllExpenses'
 
 function App() {
 
@@ -38,6 +40,14 @@ function App() {
           <Route
             path='/createIncome'
             element={ user ? <CreateIncome/> : <Navigate to={'/login'} />}
+          />
+          <Route
+            path='/allIncome'
+            element={ user ? <AllIncome/> : <Navigate to={'/login'} />}
+          />
+          <Route
+            path='/allExpenses'
+            element={ user ? <AllExpenses/> : <Navigate to={'/login'} />}
           />
         </Routes>
       </div>

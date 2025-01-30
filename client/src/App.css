@@ -140,18 +140,24 @@ h2{
   border-radius: 15px;
 }
 
-.income-summary button {
+.expense-buttons p {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  color: grey;
+}
+
+.income-summary-div button {
   border: solid rgb(179, 179, 179) 1px;
   border-radius: 15px;
   font-size: 0.9rem;
 }
 
-.income-summary h4 {
+.income-summary-div h4 {
   font-size: 1rem;
   font-weight: 600;
 }
 
-.income-summary p {
+.income-summary-div p {
   font-size: 0.9rem;
   color: #646464;
 }
@@ -162,6 +168,12 @@ h2{
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   border-radius: 15px;
+}
+
+.income-buttons p {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  color: grey;
 }
 
 .totals-div {

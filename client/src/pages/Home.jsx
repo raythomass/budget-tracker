@@ -120,22 +120,32 @@ export default function Home() {
 
         <div className="summaries flex p-4 pt-0 gap-4">
           <div className="income-summary-div p-4">
-            <div className='flex justify-between mb-4'>
+            <div className='flex justify-between items-center mb-4'>
               <h2 className='mb-2'>Income Summary</h2>
-              <Link to={'/createIncome'}>
-                <button className='p-2'>Add Income</button>
-              </Link>
+              <div className="income-buttons flex items-center gap-2">
+                <Link to={'/allIncome'} >
+                  <p>View All Income</p>
+                </Link>
+                <Link to={'/createIncome'}>
+                  <button className='p-2'>Add Income</button>
+                </Link>
+              </div>
             </div>
             {income && income.slice(0,4).map((incomes) => (
               <IncomeSummary key={incomes._id} income={incomes}/>
             ))}
           </div>
           <div className="expense-summary-div p-4">
-            <div className='flex justify-between mb-4'>
+            <div className='flex justify-between items-center mb-4'>
               <h2 className='mb-2'>Expense Summary</h2>
-              <Link to={'/createExpense'}>
-                <button className='p-2'>Add Expense</button>
-              </Link>
+              <div className="expense-buttons flex items-center gap-2">
+                <Link to={'/allExpenses'} >
+                  <p>View All Expenses</p>
+                </Link>
+                <Link to={'/createIncome'}>
+                  <button className='p-2'>Add Expenses</button>
+                </Link>
+              </div>
             </div>
             {expenses && expenses.slice(0,4).map((expense) => (
               <ExpenseSummary key={expense._id} expenses={expense}/>

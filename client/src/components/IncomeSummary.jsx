@@ -17,6 +17,8 @@ export default function IncomeSummary({ income }) {
   const date = new Date(income.createdAt); // Convert to Date object
   const formattedDate = isValid(date) ? format(date, "MM/dd/yyyy") : "Invalid Date";
 
+  //All incomes are mapped over in the Home.jsx so getting incomeId will target which one is clicked
+  //Fetch the delete income route
   const handleClick = async () => {
     const incomeId = income._id
     const response = await fetch(`http://localhost:3001/api/income/${incomeId}`, {

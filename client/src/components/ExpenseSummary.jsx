@@ -16,6 +16,8 @@ export default function ExpenseSummary({ expenses }) {
   const date = new Date(expenses.createdAt); // Convert to Date object
   const formattedDate = isValid(date) ? format(date, "MM/dd/yyyy") : "Invalid Date";
 
+  //All expenses are mapped over in the Home.jsx so getting expenseId will target which one is clicked
+  //Fetch the delete expense route
   const handleClick = async () => {
     const expenseId = expenses._id
     const response = await fetch(`http://localhost:3001/api/expenses/${expenseId}`, {
@@ -30,6 +32,7 @@ export default function ExpenseSummary({ expenses }) {
       setError(json.error)
       toast.error(error)
     } 
+    //If response is ok then throw a success message and update the expense state
     if(response.ok) {
       toast.success('Expense Deleted')
       dispatch({type: "DELETE_EXPENSE", payload: json})

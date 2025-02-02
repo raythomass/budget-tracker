@@ -8,6 +8,7 @@ import { useIncomeContext } from '../hooks/useIncomeContext'
 export default function AllIncome() {
   const { user } = useAuthContext()
   const { income, dispatch } = useIncomeContext()
+  const [incomeData, setIncomeData] = useState([])
 
   useEffect(() => {
     const fetchIncome = async () => {
@@ -17,9 +18,10 @@ export default function AllIncome() {
         }
       })
       const json = await response.json()
+      console.log(json)
 
       if(response) {
-        dispatch({type: "SET_INCOME", payload: json})
+        setIncomeData(json.data)
       }
     }
 
@@ -30,7 +32,9 @@ export default function AllIncome() {
 
   return (
     <div>
-      <h1>All Income</h1>
+      {incomeData && incomeData.map((incomes) => {
+        <p>{incomes.amount}</p>
+      })}
     </div>
   )
 }

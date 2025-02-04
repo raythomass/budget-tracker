@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useIncomeContext } from '../hooks/useIncomeContext'
 
 
 //Try a state to equal the data from the expenses array
 //The state should be uodated already and it shouldnt change from this page so the state should always update when this page is called
 export default function AllIncome() {
   const { user } = useAuthContext()
-  const { income, dispatch } = useIncomeContext()
   const [incomeData, setIncomeData] = useState([])
 
   useEffect(() => {
@@ -18,7 +16,7 @@ export default function AllIncome() {
         }
       })
       const json = await response.json()
-      console.log(json)
+      console.log(json.data)
 
       if(response) {
         setIncomeData(json.data)
@@ -28,13 +26,13 @@ export default function AllIncome() {
     if(user) {
       fetchIncome()
     }
-  }, [user, dispatch])
+  }, [user])
 
   return (
     <div>
-      {incomeData && incomeData.map((incomes) => {
-        <p>{incomes.amount}</p>
-      })}
+      {incomeData && incomeData.map((incomes) => (
+        <p key={incomes._id}>{incomes.description} {incomes.amount}</p>
+      ))}
     </div>
   )
 }

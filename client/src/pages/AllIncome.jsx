@@ -10,7 +10,7 @@ export default function AllIncome() {
 
   useEffect(() => {
     const fetchIncome = async () => {
-      const response = await fetch ('http://localhost:3001/api/expenses/', {
+      const response = await fetch ('http://localhost:3001/api/income/', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }

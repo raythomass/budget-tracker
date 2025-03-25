@@ -196,6 +196,19 @@ h2{
   width: 50%;
 }
 
+.all-income-container {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem;
+}
+
+.all-income-data {
+  padding: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
 
 @media only screen and (max-width: 750px) {
   .donut-totals-div {

@@ -29,9 +29,12 @@ export default function AllIncome() {
   }, [user])
 
   return (
-    <div>
+    <div className='all-income-container' >
       {incomeData && incomeData.map((incomes) => (
-        <p key={incomes._id}>{incomes.description} {incomes.amount}</p>
+        <div className='all-income-data'>
+          <p key={incomes._id}>{incomes.description}</p>
+          <h2>{incomes.amount}</h2>
+        </div>
       ))}
     </div>
   )

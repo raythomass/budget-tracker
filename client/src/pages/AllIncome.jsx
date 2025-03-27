@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { format, isValid } from 'date-fns'
 
 
 //Try a state to equal the data from the expenses array
@@ -7,6 +8,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 export default function AllIncome() {
   const { user } = useAuthContext()
   const [incomeData, setIncomeData] = useState([])
+
 
   useEffect(() => {
     const fetchIncome = async () => {
@@ -30,10 +32,14 @@ export default function AllIncome() {
 
   return (
     <div className='all-income-container' >
+      <h1>All Income</h1>
       {incomeData && incomeData.map((incomes) => (
-        <div className='all-income-data'>
-          <p key={incomes._id}>{incomes.description}</p>
-          <h2>{incomes.amount}</h2>
+        <div className='all-income-data flex'>
+          <div className='all-income-description'>
+            <h2>{incomes.description}</h2>
+            <p>{format(incomes.createdAt, "MM/dd/yyyy")}</p>
+          </div>
+          <h2 className='summary-green'>+${incomes.amount}</h2>
         </div>
       ))}
     </div>

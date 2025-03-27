@@ -196,17 +196,48 @@ h2{
   width: 50%;
 }
 
+
+
+
+/* All Income */
 .all-income-container {
-  display: flex;
-  flex-direction: column;
-  margin: 3rem;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 .all-income-data {
-  padding: 1.5rem;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
+  /* border: 1px solid red; */
+  justify-content: space-between;
+  border-bottom: solid 1px #cdcdcd;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.all-income-description {
+  /* border: 1px solid blue; */
+  width: 75%;
+}
+
+
+
+
+/* All Expenses */
+.all-expenses-container {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.all-expenses-data {
+  /* border: 1px solid red; */
+  justify-content: space-between;
+  border-bottom: solid 1px #cdcdcd;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.all-expenses-description {
+  /* border: 1px solid blue; */
+  width: 75%;
 }
 
 
